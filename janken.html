@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Ecosystem Game</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet" />
+  <link rel="stylesheet" href="css/janken.css">
+</head>
+
+<body>
+  <main>
+    <!-- <img src="./images/icon_fish_ecosystem2.png" alt="" width="300">
+          <p>Predation loop</p>
+          <br> -->
+
+    
+    <section class="tytle">
+      <h1>Fish Ecosystem Game</h1>
+    </section>
+
+    <div id="intro" class="intro">
+      <img src="./images/icon_fish_ecosystem2.png" alt="" width="400">
+      <button id="button_start" class="button_start">START</button>
+    </div>
+    <div id="game" class="main_screen" style="display: none;">
+      <div class="computer_block">
+        <section id="computer">
+          <p>What is a computer card?</p>
+        </section>
+      </div>
+      
+      <div class="center_block">
+        <section id="winlose">
+          <p>Win or Lose or Draw?</p>
+        </section>
+        <section id="tips">
+          <p>💡 You can only view farming tips when you win.</p>
+        </section>
+      </div>
+        
+      <div>
+        <section class="choice_button_area">
+          <button id ="button_rock" class="choice_button">
+            <img src="./images/icon_tilapia.png" alt="" width="70">
+            <p>Tilapia</p>
+          </button>
+          <button id ="button_scissors" class="choice_button">
+            <img src="./images/icon_shrimp.png" alt="" width="70">
+            <p>Giant freshwater prawn</p>
+          </button>
+          <button id ="button_paper" class="choice_button">
+            <img src="./images/icon_snail.png" alt="" width="70">
+            <p>Apple snail</p>
+          </button>
+        </section>  
+      </div>
+    </div>
+    
+    
+    
+
+    <audio src="./sounds/sound_win2.mp3" id ="sound_win"></audio>
+    <audio src="./sounds/sound_lose2.mp3" id ="sound_lose"></audio>
+    <audio src="./sounds/sound_draw_2.mp3" id ="sound_draw"></audio>
+
+
+    <!-- <section id ="score">
+      <p>Win:0 Lose:0 Draw:0</p>
+    </section> -->
+
+  
+
+  </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+
+  let win = 0;
+  let lose = 0;
+  let draw = 0;
+
+  // $("#score").text("Win:"+ win +" Lose:"+ lose+" Draw:"+ draw);
+
+  $("#button_start").on("click", function(){
+    $("#intro").hide();
+    $("#game").show();
+  });
+
+  $("#tips").fadeIn();
+
+
+  // ティラピアをクリック
+  $("#button_rock").on("click", function () {
+  const min = 0;
+  const max = 2;
+
+  // 追加：養殖ワンポイント
+  const tips = [
+    "Feed intake should be approximately 3% of fish body weight per da.",
+    "Carbohydrates are not essential nutrients for fish.",
+    "EPA and DHA are not essential fatty acids for freshwater fish.",
+    "Freshwater fish prefer floating feed.",
+    "Shrimp prefer sinking feed.",
+    "Protein is used for both anabolism and catabolism.",
+    "Check the expiration date when purchasing feed.",
+    "Feed particle size should be less than 50% of the mouth diameter.",
+    "FCR is the amount of feed required for fish to grow 1 kg.",
+    "Sales prices fluctuate depending on the season."
+];
+  
+  const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  console.log(randomNumber);
+  
+  // 0→グー:ティラピア
+  // 1→チョキ:オニテナガエビ
+  // 2→パー:ジャンボタニシ
+
+  if(randomNumber === 0){
+    $("#computer").html('<img src = "images/icon_tilapia.png" width="200"><p>Compute：Tilapia</p>');
+    $("#winlose").text("Draw")
+    // draw = draw + 1;
+    $("#sound_draw").get(0).play();
+    $("#tips").hide();
+  }
+  else if(randomNumber === 1){
+    $("#computer").html('<img src = "images/icon_shrimp.png" width="200"><p>Compute：Giant freshwater prawn</p>');
+    $("#winlose").text("Win")
+    // win = win + 1;
+    $("#sound_win").get(0).play();
+    $("#tips").text("💡"+tips[Math.floor(Math.random() * tips.length)])
+    $("#tips").show();
+  }
+  else if(randomNumber === 2){
+    $("#computer").html('<img src = "images/icon_snail.png" width="200"><p>Compute：Apple snail</p>');
+    $("#winlose").text("Lose")
+    // lose = lose +1;
+    $("#sound_lose").get(0).play();
+    $("#tips").hide();
+  }
+  });
+
+// オニテナガエビをクリック
+  $("#button_scissors").on("click", function () {
+  const min = 0;
+  const max = 2;
+
+  // 追加：養殖ワンポイント
+  const tips = [
+    "Feed intake should be approximately 3% of fish body weight per da.",
+    "Carbohydrates are not essential nutrients for fish.",
+    "EPA and DHA are not essential fatty acids for freshwater fish.",
+    "Freshwater fish prefer floating feed.",
+    "Shrimp prefer sinking feed.",
+    "Protein is used for both anabolism and catabolism.",
+    "Check the expiration date when purchasing feed.",
+    "Feed particle size should be less than 50% of the mouth diameter.",
+    "FCR is the amount of feed required for fish to grow 1 kg.",
+    "Sales prices fluctuate depending on the season."
+];
+  
+  const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  console.log(randomNumber);
+  
+  // 0→グー:ティラピア
+  // 1→チョキ:オニテナガエビ
+  // 2→パー:ジャンボタニシ
+
+  if(randomNumber === 0){
+    $("#computer").html('<img src = "images/icon_tilapia.png" width="200"><p>Compute：Tilapia</p>');
+    $("#winlose").text("Lose")
+    // draw = draw + 1;
+    $("#sound_lose").get(0).play();
+    $("#tips").hide();
+  }
+  else if(randomNumber === 1){
+    $("#computer").html('<img src = "images/icon_shrimp.png" width="200"><p>Compute：Giant freshwater prawn</p>');
+    $("#winlose").text("Draw")
+    // win = win + 1;
+    $("#sound_draw").get(0).play();
+    $("#tips").text("💡"+tips[Math.floor(Math.random() * tips.length)])
+    $("#tips").hide();
+  }
+  else if(randomNumber === 2){
+    $("#computer").html('<img src = "images/icon_snail.png" width="200"><p>Compute：Apple snail</p>');
+    $("#winlose").text("Win")
+    // lose = lose +1;
+    $("#sound_win").get(0).play();
+    $("#tips").show();
+  }
+  });
+
+// タニシをクリック
+$("#button_paper").on("click", function () {
+  const min = 0;
+  const max = 2;
+
+  // 追加：養殖ワンポイント
+  const tips = [
+    "Feed intake should be approximately 3% of fish body weight per da.",
+    "Carbohydrates are not essential nutrients for fish.",
+    "EPA and DHA are not essential fatty acids for freshwater fish.",
+    "Freshwater fish prefer floating feed.",
+    "Shrimp prefer sinking feed.",
+    "Protein is used for both anabolism and catabolism.",
+    "Check the expiration date when purchasing feed.",
+    "Feed particle size should be less than 50% of the mouth diameter.",
+    "FCR is the amount of feed required for fish to grow 1 kg.",
+    "Sales prices fluctuate depending on the season."
+];
+  
+  const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  console.log(randomNumber);
+  
+  // 0→グー:ティラピア
+  // 1→チョキ:オニテナガエビ
+  // 2→パー:ジャンボタニシ
+
+  if(randomNumber === 0){
+    $("#computer").html('<img src = "images/icon_tilapia.png" width="200"><p>Compute：Tilapia</p>');
+    $("#winlose").text("Win")
+    // draw = draw + 1;
+    $("#sound_win").get(0).play();
+    $("#tips").show();
+  }
+  else if(randomNumber === 1){
+    $("#computer").html('<img src = "images/icon_shrimp.png" width="200"><p>Compute：Giant freshwater prawn</p>');
+    $("#winlose").text("Lose")
+    // win = win + 1;
+    $("#sound_lose").get(0).play();
+    $("#tips").text("💡"+tips[Math.floor(Math.random() * tips.length)])
+    $("#tips").hide();
+  }
+  else if(randomNumber === 2){
+    $("#computer").html('<img src = "images/icon_snail.png" width="200"><p>Compute：Apple snail</p>');
+    $("#winlose").text("Draw")
+    // lose = lose +1;
+    $("#sound_draw").get(0).play();
+    $("#tips").hide();
+  }
+  });
+
+  // $("#score").text("勝:"+ win +" 負:"+ lose+" あいこ:"+ draw);
+
+  
+
+
+
+  // if(randomNumber === 0){
+  //     $("#computer").text("コンピュータ：グー")
+  //     $("#winlose").text("あいこ")
+  //   }else if(randomNumber === 1){
+  //     $("#computer").text("コンピュータ：チョキ")
+  //     $("#winlose").text("あなたの勝ち")
+  //   }else if(randomNumber === 2){
+  //     $("#computer").text("コンピュータ：パー")
+  //     $("#winlose").text("あなたの負け")
+  //   }
+  
+
+  // $("#button_scissors").on("click", function () {
+  // const min = 0;
+  // const max = 2;
+  
+  // const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  // console.log(randomNumber);
+  
+  // // 0→グー
+  // // 1→チョキ
+  // // 2→パー
+  
+
+
+  // if(randomNumber === 0){
+  //     $("#computer").text("コンピュータ：グー")
+  //     $("#winlose").text("あなたの負け")
+  //   }else if(randomNumber === 1){
+  //     $("#computer").text("コンピュータ：チョキ")
+  //     $("#winlose").text("あいこ")
+  //   }else if(randomNumber === 2){
+  //     $("#computer").text("コンピュータ：パー")
+  //     $("#winlose").text("あなたの勝ち")
+  //   }
+  
+  // });
+
+  // $("#button_paper").on("click", function () {
+  // const min = 0;
+  // const max = 2;
+  
+  // const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
+  // console.log(randomNumber);
+  
+  // // 0→グー
+  // // 1→チョキ
+  // // 2→パー
+  
+  // if(randomNumber === 0){
+  //     $("#computer").text("コンピュータ：グー")
+  //     $("#winlose").text("あなたの勝ち")
+  //   }else if(randomNumber === 1){
+  //     $("#computer").text("コンピュータ：チョキ")
+  //     $("#winlose").text("あなたの負け")
+  //   }else if(randomNumber === 2){
+  //     $("#computer").text("コンピュータ：パー")
+  //     $("#winlose").text("あいこ")
+  //   }
+  
+  // });
+  
+  </script>
+</body>
+
+</html>

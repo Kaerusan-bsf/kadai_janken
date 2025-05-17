@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button {
+  width: 200px;
+  height: 70px;
+}
+
+main {
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+section {
+  height: calc(100vh/4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tytle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.intro{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  gap:32px;
+}
+
+.button_start{
+  background:#fff;
+  border:1px solid #aaa; /* 枠線	やや濃いグレーで縁取り。 */
+  border-radius:10px;
+}
+
+.main_screen{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.computer_block{
+  width: 300px;
+}
+
+.center_block{
+   width:300px; 
+}
+
+#winlose{
+  font-size: 26px;
+}
+
+.choice_button_area{
+   width:300px; 
+}
+
+#computer{
+  flex-direction: column;   /* ←縦並びにする */
+}
+
+#tips{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  /* font-weight: bold; */
+  color: gray;/*文字色*/
+  background: #FFF;
+  border: solid 3px #6091d3;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
+
+.choice_button_area{
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.choice_button{
+  width: 120px;
+  height:120px;
+  background:#fff;
+  border:1px solid #aaa; /* 枠線	やや濃いグレーで縁取り。 */
+  border-radius:10px;
+  text-align:center;
+  cursor:pointer;
+  
+}
+
+.choice_button:active{ 
+  transform:scale(.95); 
+}
+
+
+
